@@ -1,0 +1,13 @@
+<button type="button" (click)="callNewCat()" [disabled]="loading">Get a Cat</button>
+<p *ngIf="loading">
+	loading...
+</p>
+<div *ngIf="cat$ | async as cat; else: NO_CAT">
+	<br/>
+	<img [src]="cat.url" height="300" />
+	<ngx-json-viewer [json]="cat"></ngx-json-viewer>
+	<br/>
+</div>
+	<ng-template #NO_CAT>
+		<p>Press the button to show a cute cat image</p>
+	</ng-template>
